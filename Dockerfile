@@ -21,3 +21,6 @@ COPY --from=build /app/publish .
 
 # Uygulamayı başlat
 ENTRYPOINT ["dotnet", "Postgresql.Mvc.dll"]
+# Uygulamanın dinleyeceği portu belirt
+EXPOSE 5000
+ENV ASPNETCORE_URLS=http://0.0.0.0:5000
