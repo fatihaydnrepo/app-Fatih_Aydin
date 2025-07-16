@@ -1,5 +1,5 @@
 # 1. Build aşaması
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /app
 
 # Çözüm ve proje dosyalarını kopyala
@@ -15,7 +15,7 @@ RUN dotnet restore "src/Postgresql.Mvc/Postgresql.Mvc.csproj"
 RUN dotnet publish "src/Postgresql.Mvc/Postgresql.Mvc.csproj" -c Release -o /app/publish
 
 # 2. Runtime aşaması
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+FROM mcr.microsoft.com/dotnet/aspnet:9.0
 WORKDIR /app
 COPY --from=build /app/publish .
 
